@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  get 'places/index'
 
   resources :articles do
   	resources :comments
@@ -7,6 +7,6 @@ Rails.application.routes.draw do
 
   resources :places
 
-  root 'welcome#index'
+  root 'places#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
