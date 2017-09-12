@@ -1,0 +1,51 @@
+<h1>Listing places</h1>
+ 
+<input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Buscar...">
+
+<table class="table" id="myTable">
+  <tr>
+    <th>Nombre</th>
+    <th>Coordenadas</th>
+    <th>Acciones</th>
+  </tr>
+ 
+  <% @places.each do |place| %>
+    <tr>
+      <td><%= place.name %></td>
+      <td><input type_="text" id="myInput" value="<%= place.coordinates %>" ></input></td>
+      <td style="display: none"><%= place.keywords %></td>
+      <td>
+        <%= link_to 'Mostrar', place_path(place), remote: true, class: "btn btn-primary" %> 
+        <button class="btn btn-primary" data-clipboard-text="<%= place.coordinates %>">Copiar</button>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.7.1/dist/clipboard.min.js"></script>
+
+<script>
+function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+var clipboard = new Clipboard('.btn');
+
+</script>

@@ -1,0 +1,25 @@
+<%= form_for :place, url: places_path do |f| %>
+  <div class="form-group">
+    <%= f.label :name, class: "control-label" %>
+    <div class="col">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :coordinates, class: "control-label" %>
+    <div class="col">
+      <%= f.text_field :coordinates, class: "form-control" %>
+    </div>
+  </div>
+ 
+  <div class="form-group">
+    <%= f.label :keywords, class: "control-label" %><br>
+    <%= f.text_area :keywords, class: "form-control" %>
+  </div>
+ 
+  <div class="form-group">
+    <%= f.submit "Enviar", class: "btn btn-default btn-primary" %>
+  </div>
+ 
+<% end %>
