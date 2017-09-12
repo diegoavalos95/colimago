@@ -14,7 +14,7 @@ class PlacesController < ApplicationController
 		@place = Place.new(place_params)
 
 		@place.save
-		redirect_to @place
+		redirect_to :action => 'index'
 	end
 
 	private
